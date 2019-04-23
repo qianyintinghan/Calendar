@@ -1,5 +1,7 @@
 import java.awt.BorderLayout;
+import java.awt.Button;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.Label;
 import java.util.Calendar;
 
@@ -10,12 +12,12 @@ public class Main {
 		f.setTitle("Calendar");
 		f.setLocation(500, 300);
 		f.setSize(500, 500);
-		f.setResizable(false);
+//		f.setResizable(false);
 	}
 	
 	static void addYearAndMonth(JFrame f) {
 		JPanel top = new JPanel();
-		top.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 5));
+		top.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 5));
 		
 		JPanel yearP = new JPanel();
 		String[] years = new String[] {"2017", "2018", "2019", "2020"};
@@ -37,14 +39,17 @@ public class Main {
 		f.add(top, BorderLayout.NORTH);
 	}
 	
-	static void addWeek(JFrame f) {
+	static void addWeekAndDay(JFrame f) {
 		JPanel body = new JPanel();
-		
-		body.setLayout(new FlowLayout(FlowLayout.LEFT, 30, 20));
+		body.setLayout(new GridLayout(5, 7));
 		
 		String[] weeks = new String[] {"Sun", "Mon", "Tue", "Wed", "Thr", "Fri", "Sat"};
 		for (int i = 0; i < 7; i++) {
-			body.add(new Label(weeks[i]));
+			body.add(new JLabel(weeks[i]));
+		}
+		
+		for (int i = 1; i < 28; i++) {
+			body.add(new JLabel("" + i));
 		}
 		
 		f.add(body);
@@ -55,12 +60,9 @@ public class Main {
 
 		setFrame(frame);
 		addYearAndMonth(frame);
-		addWeek(frame);
+		addWeekAndDay(frame);
 		
-//		Calendar c = Calendar.getInstance();
-//		System.out.println(c.get(Calendar.YEAR));
-//		System.out.println(c.get(Calendar.MONTH));
-		
+//		frame.pack();
 		frame.setVisible(true);
 	}
 }
