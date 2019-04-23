@@ -1,10 +1,18 @@
 import java.awt.BorderLayout;
-import java.awt.Button;
 import java.awt.FlowLayout;
+import java.awt.Label;
+import java.util.Calendar;
 
 import javax.swing.*;
 
 public class Main {
+	static void setFrame(JFrame f) {
+		f.setTitle("Calendar");
+		f.setLocation(500, 300);
+		f.setSize(500, 500);
+		f.setResizable(false);
+	}
+	
 	static void addYearAndMonth(JFrame f) {
 		JPanel top = new JPanel();
 		top.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 5));
@@ -36,7 +44,7 @@ public class Main {
 		
 		String[] weeks = new String[] {"Sun", "Mon", "Tue", "Wed", "Thr", "Fri", "Sat"};
 		for (int i = 0; i < 7; i++) {
-			body.add(new Button(weeks[i]));
+			body.add(new Label(weeks[i]));
 		}
 		
 		f.add(body);
@@ -44,15 +52,15 @@ public class Main {
 	
 	static public void main(String args[]) {
 		JFrame frame = new JFrame();
-		frame.setTitle("Calendar");
-		frame.setLocation(500, 300);
-		frame.setSize(500, 500);
-		
+
+		setFrame(frame);
 		addYearAndMonth(frame);
 		addWeek(frame);
 		
+//		Calendar c = Calendar.getInstance();
+//		System.out.println(c.get(Calendar.YEAR));
+//		System.out.println(c.get(Calendar.MONTH));
 		
-//		frame.pack();
 		frame.setVisible(true);
 	}
 }
